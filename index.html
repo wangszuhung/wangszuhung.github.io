@@ -7,7 +7,9 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        min-height: 80%;
+        height:auto;
+
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -15,59 +17,137 @@
         margin: 0;
         padding: 0;
       }
+      .btn_use{
+      	text-align: center;
+      	/*height: 100%;*/
+      }
+      .summit{
+		color: #fff;
+		background-color: #428bca;
+		border-color: #357ebd;
+		padding: 8px;
+		border-radius:5px;
+      }
+      .add_message{
+      	background-color: orange;
+      	color: white;
+      	text-align: center;
+      	font-size: 18px;
+      	/*z-index: 200;*/
+      }
     </style>
   </head>
   <body>
-  	<div >
-    	<button onclick="myFunction()">send</button>
-    </div>
+  	<div id="message"></div>
     <div id="map"></div>
+    <div class="btn_use">
+    	<button onclick="get_lat_lng()" class="summit">Summit</button>
+    	<button>NoNo</button>
+    </div>
     
-
     <script>
+		// 瀏覽器支援 HTML5 定位方法
+		if (navigator.geolocation) {
+		  // HTML5 定位抓取
+		  navigator.geolocation.getCurrentPosition(function (position) {
+		    mapServiceProvider(position.coords.latitude, position.coords.longitude);
+		  },
+		  function(error) {
+		    switch (error.code) {
+		      case error.TIMEOUT:
+		        alert('連線逾時');
+		        break;
+
+		      case error.POSITION_UNAVAILABLE:
+		        alert('無法取得定位');
+		        break;
+
+		      case error.PERMISSION_DENIED: // 拒絕
+		        alert('想要參加本活動，\n記得允許手機的GPS定位功能喔!');
+		        break;
+
+		      case error.UNKNOWN_ERROR:
+		        alert('不明的錯誤，請稍候再試');
+		        break;
+		    }
+		  });
+		} else { // 不支援 HTML5 定位
+		  // 若支援 Google Gears
+		  if (window.google && google.gears) {
+		    try {
+		      // 嘗試以 Gears 取得定位
+		      var geo = google.gears.factory.create('beta.geolocation');
+		      geo.getCurrentPosition(successCallback, errorCallback, { enableHighAccuracy: true, gearsRequestAddress: true });
+		    } catch (e) { 
+		      alert('定位失敗請稍候再試');
+		    }
+		  } else {
+		    alert('想要參加本活動，\n記得允許手機的GPS定位功能喔!');
+		  }
+		}
+
+		// 取得 Gears 定位發生錯誤
+		function errorCallback(err) {
+		  var msg = 'Error retrieving your location: ' + err.message;
+		  alert(msg);
+		}
+
+		// 成功取得 Gears 定位
+		function successCallback(p) {
+		  mapServiceProvider(p.latitude, p.longitude);
+		}
+
+		// 顯示經緯度
+		function mapServiceProvider(latitude, longitude) {
+		  // alert('經緯度：' + latitude + ', ' + longitude);
+		  initMap(latitude, longitude);
+
+		}
+
 
       // The following example creates a marker in Stockholm, Sweden using a DROP
       // animation. Clicking on the marker will toggle the animation between a BOUNCE
       // animation and no animation.
 
-      var marker;
+    	var marker;
 
-      function initMap() {
-      console.log("initMap");
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 18,
-          center: {lat: 59.325, lng: 18.070}
-        });
+		function initMap(latitude, longitude) {
+			console.log("initMap");
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 18,
+				center: {lat: latitude, lng: longitude}
+			});
 
-        marker = new google.maps.Marker({
-          map: map,
-          draggable: true,
-          animation: google.maps.Animation.DROP,
-          position: {lat: 59.325, lng: 18.070}
-        });
-        marker.addListener('click', toggleBounce);
-      }
+			marker = new google.maps.Marker({
+				map: map,
+				draggable: true,
+				animation: google.maps.Animation.DROP,
+				// position: {lat: 59.325, lng: 18.070}
+				position: {lat: latitude, lng: longitude}
+			});
+			marker.addListener('click', toggleBounce);
+		}
+		function toggleBounce() {
+			var lat = marker.getPosition().lat();
+			var lng = marker.getPosition().lng();
+			console.log("toggleBounce",lat,lng);
+			if (marker.getAnimation() !== null) {
+				console.log("toggleBounce1");
+				marker.setAnimation(null);
+			} else {
+          		marker.setAnimation(google.maps.Animation.BOUNCE);
+			}
+        	console.log("toggleBounce2",lat,lng);
+		}
+		function get_lat_lng(){
+			// console.log("send",marker);
+			var lat = marker.getPosition().lat();
+			var lng = marker.getPosition().lng();
+			console.log("toggleBounce",lat,lng);
+			document.getElementById('message').innerHTML = "";
+			document.getElementById('message').innerHTML = "<div class='add_message'> Lat: "+lat+'<br>Lng: '+lng+'</div>';
 
-      function toggleBounce() {
-      	
-        var lat = marker.getPosition().lat();
-		var lng = marker.getPosition().lng();
-        console.log("toggleBounce",lat,lng);
-        if (marker.getAnimation() !== null) {
-        console.log("toggleBounce1");
-          marker.setAnimation(null);
-        } else {
-        console.log("toggleBounce2");
-          marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-      }
-      function myFunction(){
-      	console.log("send");
-		var lat = marker.getPosition().lat();
-		var lng = marker.getPosition().lng();
-		alert("toggleBounce",lat,lng);
-      	
-      }
+		}
     </script>
     
     <script async defer
