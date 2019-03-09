@@ -18,11 +18,11 @@
     </style>
   </head>
   <body>
-    <div id="map"></div>
-    <div >
+  	<div >
     	<button onclick="myFunction()">send</button>
-    
     </div>
+    <div id="map"></div>
+    
 
     <script>
 
@@ -63,9 +63,9 @@
       }
       function myFunction(){
       	console.log("send");
-        var lat = marker.getPosition().lat();
-		    var lng = marker.getPosition().lng();
-        console.log("toggleBounce",lat,lng);
+		var lat = marker.getPosition().lat();
+		var lng = marker.getPosition().lng();
+		alert("toggleBounce",lat,lng);
       	
       }
     </script>
