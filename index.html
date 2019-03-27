@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Marker Animations</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
@@ -46,7 +44,6 @@
     	<button onclick="get_lat_lng()" class="summit">Summit</button>
     	<button>NoNo</button>
     </div>
-
     
     <script>
 		// 瀏覽器支援 HTML5 定位方法
@@ -149,43 +146,43 @@
 			console.log("toggleBounce",lat,lng);
 			document.getElementById('message').innerHTML = "";
 			document.getElementById('message').innerHTML = "<div class='add_message'> Lat: "+lat+'<br>Lng: '+lng+'</div>';
-			$.ajax({
-				type: "POST",
-				url: ('40.121.87.181:8888/api/send'),
-				dataType: "json",
-				// dataType: "text",
-				// async: true,
-				data: {
-					lat:lat,
-					lon:lng
-				},
-				success: function(res) {
-					console.log(red);
-					// if(GlobalConfig.CONSOLE_LOG == true){
-					// 	console.log("",res);
-					// }
-					// if(res['code']=="1"){
-					// 	swal({
-					// 		type: 'success',
-					// 		title: '成功',
-					// 		text: '更新成功',
-					// 		// footer: '<a href>Why do I have this issue?</a>'
-					// 	})
-					// }
-					// else{
-					// 	swal({
-					// 		type: 'error',
-					// 		title: 'Oops...',
-					// 		text: '更新失敗',
-					// 		// footer: '<a href>Why do I have this issue?</a>'
-					// 	})
-					// }
+			// $.ajax({
+			// 	type: "POST",
+			// 	url: ('40.121.87.181:8888/api/send'),
+			// 	dataType: "json",
+			// 	// dataType: "text",
+			// 	// async: true,
+			// 	data: {
+			// 		lat:lat,
+			// 		lon:lng
+			// 	},
+			// 	success: function(res) {
+			// 		console.log(red);
+			// 		// if(GlobalConfig.CONSOLE_LOG == true){
+			// 		// 	console.log("",res);
+			// 		// }
+			// 		// if(res['code']=="1"){
+			// 		// 	swal({
+			// 		// 		type: 'success',
+			// 		// 		title: '成功',
+			// 		// 		text: '更新成功',
+			// 		// 		// footer: '<a href>Why do I have this issue?</a>'
+			// 		// 	})
+			// 		// }
+			// 		// else{
+			// 		// 	swal({
+			// 		// 		type: 'error',
+			// 		// 		title: 'Oops...',
+			// 		// 		text: '更新失敗',
+			// 		// 		// footer: '<a href>Why do I have this issue?</a>'
+			// 		// 	})
+			// 		// }
 					
-				},
-				error: function(jqXHR) {
-					console.log("發生錯誤: " + jqXHR.status);
-				}
-			})
+			// 	},
+			// 	error: function(jqXHR) {
+			// 		console.log("發生錯誤: " + jqXHR.status);
+			// 	}
+			// })
 
 		}
     </script>
