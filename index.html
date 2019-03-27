@@ -149,6 +149,7 @@
 			console.log("toggleBounce",lat,lng);
 			document.getElementById('message').innerHTML = "";
 			document.getElementById('message').innerHTML = "<div class='add_message'> Lat: "+lat+'<br>Lng: '+lng+'</div>';
+			console.log("tttt");
 			$.ajax({
 				type: "POST",
 				url: ('40.121.87.181:8888/api/send'),
