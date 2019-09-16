@@ -1,160 +1,229 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Marker Animations</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+<title>Joe Bloggs - Curriculum Vitae</title>
 
-    
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        min-height: 80%;
-        height:auto;
+<meta name="viewport" content="width=device-width"/>
+<meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
+<meta charset="UTF-8"> 
 
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      .btn_use{
-      	text-align: center;
-      	/*height: 100%;*/
-      }
-      .summit{
-		color: #fff;
-		background-color: #428bca;
-		border-color: #357ebd;
-		padding: 8px;
-		border-radius:5px;
-      }
-      .add_message{
-      	background-color: orange;
-      	color: white;
-      	text-align: center;
-      	font-size: 18px;
-      	/*z-index: 200;*/
-      }
-    </style>
-  </head>
-  <body>
-  	<div id="message"></div>
-    <div id="map"></div>
-    <div class="btn_use">
-    	<button onclick="get_lat_lng()" class="summit">Summit</button>
-    	<button>NoNo</button>
-    </div>
-    
-    <script>
-		// 瀏覽器支援 HTML5 定位方法
-		if (navigator.geolocation) {
-		  // HTML5 定位抓取
-		  navigator.geolocation.getCurrentPosition(function (position) {
-		    mapServiceProvider(position.coords.latitude, position.coords.longitude);
-		  },
-		  function(error) {
-		    switch (error.code) {
-		      case error.TIMEOUT:
-		        alert('連線逾時');
-		        break;
+<link type="text/css" rel="stylesheet" href="style.css">
+<link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
 
-		      case error.POSITION_UNAVAILABLE:
-		        alert('無法取得定位');
-		        break;
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body id="top">
+<div id="cv" class="instaFade">
+	<div class="mainDetails">
+		<div id="headshot" class="quickFade">
+			<img src="jason_wang.jpg" alt="Jason Wang" />
+		</div>
+		
+		<div id="name">
+			<h1 class="quickFade delayTwo">Jason Wang</h1>
+			<h2 class="quickFade delayThree">Szu-Hung,Wang</h2>
+		</div>
+		
+		<div id="contactDetails" class="quickFade delayFour">
+			<ul>
+				<li>E: <a href="mailto:wangszuhung1@gmail.com" target="_blank">wangszuhung1@gmail.com</a></li>
+				<!-- <li>W: <a href="http://www.bloggs.com">www.bloggs.com</a></li> -->
+				<li>M: +886-963-189-257</li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+	<div id="mainArea" class="quickFade delayFive">
+		<section>
+			<article>
+				<div class="sectionTitle">
+					<h1>Personal Profile</h1>
+				</div>
+				
+				<div class="sectionContent">
+					<p>
+						I have years of experience as a front end developer ,back-end developer and Server Management on Cloud. I have accomplished different projects such as develop cloud and integration of hardware and IoT(MQTT) communication systems and Web front-end development application and Application Programming Interface(API) serial connection and back-end development test
+					</p>
+				</div>
+			</article>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Work Experience</h1>
+				<h2>
+					(Outside of school)
+				</h2>
+			</div>
+			<div class="sectionContent">
+				<article>
+					<h2>ChargeSpot in Taiwan</h2>
+					<p class="subDetails">SEP 2019 - Present</p>
+					<p>
+						System development and application
+					</p>
+				</article>
+				<article>
+					<h2>CourseFinder in Chinese Culture University Startup Team</h2>
+					<p class="subDetails">JUN 2016 - JUN 2018</p>
+					<p>Server management(Linux Ubuntu 16.04 for CodeIgniter Web application) & Web Crawler(Python) & SQL management</p>
+				</article>
+				<article>
+					<h2>Microsoft Student Partners 10th in Taiwan</h2>
+					<p class="subDetails">JUL 2015 - JUL 2016</p>
+					<p>Microsoft Student Partners 10th in Taiwan Tech team promotion Cloud Service in Campus (Azure,WebApp,Azure ML...)</p>
+				</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+		<section>
+			<div class="sectionTitle">
+				<h1>External case</h1>
+			</div>
+			<div class="sectionContent">
+				<article>
+					<h2>ICO/P2P</h2>
+					<p class="subDetails">AUG 2018 - SEP 2018</p>
+					<p>
+						Front-End for financial currency exchange
+					</p>
+				</article>
+				<article>
+					<h2>BonBonMusic</h2>
+					<p class="subDetails">APR 2017 - OCT 2017</p>
+					<p>
+						Music platform Front-End
+						<a href="https://bonbonmusic.com/" target="_blank">(URL)</a>
+					</p>
+				</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Skills</h1>
+			</div>
+			
+			<div class="sectionContent">
+				<div>
+					<div class="skills_set">Language</div>
+					<ul class="keySkills">
+						<li>Python</li>
+						<li>Javascipt</li>
+						<li>Nodejs</li>
+						<li>C++</li>
+						<li>Golang</li>
+						
+					</ul>
+				</div>
+				<div>
+					<div class="skills_set">Frond-End</div>
+					<ul class="keySkills">
+						<li>HTML/CSS/SCSS</li>
+						<li>Vue</li>
+						<li>Nuxt</li>
+						<li>framework7(framework for building iOS, Android & Desktop apps)</li>
+						<li>jQuery</li>
+						<li>axios</li>
+						<li>mongoose</li>
 
-		      case error.PERMISSION_DENIED: // 拒絕
-		        alert('想要參加本活動，\n記得允許手機的GPS定位功能喔!');
-		        break;
+					</ul>
+				</div>
+				<div>
+					<div class="skills_set">Backend</div>
+					<ul class="keySkills">
+						<li>Express</li>
+						<li>Flask</li>
+						<li>RESTful api</li>
 
-		      case error.UNKNOWN_ERROR:
-		        alert('不明的錯誤，請稍候再試');
-		        break;
-		    }
-		  });
-		} else { // 不支援 HTML5 定位
-		  // 若支援 Google Gears
-		  if (window.google && google.gears) {
-		    try {
-		      // 嘗試以 Gears 取得定位
-		      var geo = google.gears.factory.create('beta.geolocation');
-		      geo.getCurrentPosition(successCallback, errorCallback, { enableHighAccuracy: true, gearsRequestAddress: true });
-		    } catch (e) { 
-		      alert('定位失敗請稍候再試');
-		    }
-		  } else {
-		    alert('想要參加本活動，\n記得允許手機的GPS定位功能喔!');
-		  }
-		}
+					</ul>
+				</div>
+				<div>
+					<div class="skills_set">Database</div>
+					<ul class="keySkills">
+						<li>MySql</li>
+						<li>MongoDB</li>
+						
+					</ul>
+				</div>
+				<div>
+					<div class="skills_set">Hardware</div>
+					<ul class="keySkills">
+						<li>Nvidia Jetson TX2</li>
+						<li>Nvidia Jetson Nano</li>
+						<li>Raspberry Pi</li>
+						<li>Arduino</li>
 
-		// 取得 Gears 定位發生錯誤
-		function errorCallback(err) {
-		  var msg = 'Error retrieving your location: ' + err.message;
-		  alert(msg);
-		}
+					</ul>
+				</div>
+				<div>
+					<div class="skills_set">Other</div>
+					<ul class="keySkills">
+						<li>Linux(Ubuntu)</li>
+						<li>MQTT(Message Queuing Telemetry Transport)</li>
+						<li>Postman</li>
+						<li>VSCode</li>
+						<li>Sublime</li>
 
-		// 成功取得 Gears 定位
-		function successCallback(p) {
-		  mapServiceProvider(p.latitude, p.longitude);
-		}
-
-		// 顯示經緯度
-		function mapServiceProvider(latitude, longitude) {
-		  // alert('經緯度：' + latitude + ', ' + longitude);
-		  initMap(latitude, longitude);
-
-		}
-
-
-      // The following example creates a marker in Stockholm, Sweden using a DROP
-      // animation. Clicking on the marker will toggle the animation between a BOUNCE
-      // animation and no animation.
-
-    	var marker;
-
-		function initMap(latitude, longitude) {
-			console.log("initMap");
-			var map = new google.maps.Map(document.getElementById('map'), {
-				zoom: 18,
-				center: {lat: latitude, lng: longitude}
-			});
-
-			marker = new google.maps.Marker({
-				map: map,
-				draggable: true,
-				animation: google.maps.Animation.DROP,
-				// position: {lat: 59.325, lng: 18.070}
-				position: {lat: latitude, lng: longitude}
-			});
-			marker.addListener('click', toggleBounce);
-		}
-		function toggleBounce() {
-			var lat = marker.getPosition().lat();
-			var lng = marker.getPosition().lng();
-			console.log("toggleBounce",lat,lng);
-			if (marker.getAnimation() !== null) {
-				console.log("toggleBounce1");
-				marker.setAnimation(null);
-			} else {
-          		marker.setAnimation(google.maps.Animation.BOUNCE);
-			}
-        	console.log("toggleBounce2",lat,lng);
-		}
-		function get_lat_lng(){
-			// console.log("send",marker);
-			var lat = marker.getPosition().lat();
-			var lng = marker.getPosition().lng();
-			console.log("toggleBounce",lat,lng);
-			document.getElementById('message').innerHTML = "";
-			document.getElementById('message').innerHTML = "<div class='add_message'> Lat: "+lat+'<br>Lng: '+lng+'</div>';
-
-		}
-    </script>
-    
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhTkjsczXwcKkElM6o4h2xKBoNm1VyC1k&callback=initMap">
-    </script>
-  </body>
+					</ul>
+				</div>
+			</div>
+			<div class="clear"></div>
+		</section>
+		
+		
+		<section>
+			<div class="sectionTitle">
+				<h1>Education</h1>
+			</div>
+			<div class="sectionContent">
+				<article>
+					<h2>National Taipei University of Technology, Taipei Tech, Ph.D. in Electrical Engineering</h2>
+					<p class="subDetails">SEP 2018 - Present</p>
+					<p>
+						Organizing an autonomous cars Persuasive Electric Vehicle(PEV) system team in Taiwan
+					</p>
+				</article>
+				<article>
+					<h2>Massachusetts Institute of Technology, MIT, Visiting Student in Media Lab City Science Group</h2>
+					<p class="subDetails">AUG 2018 - AUG 2019</p>
+					<p>Persuasive Electric Vehicle(PEV) Project, use Robot Operating System (ROS) in this project, and develop vision-related system applications and hardware system integration and cloud system Web-App(https://pev.world/) development</p>
+				</article>
+				<article>
+					<h2>National Taipei University of Technology, Taipei Tech, MS in Electrical Engineering</h2>
+					<p class="subDetails">SEP 2016 - JUL 2018</p>
+					<p>
+						Build an artificial intelligence energy-saving controller for hardware-to-software and cloud system applications on air conditioners
+					</p>
+					<i>
+						Theme:Application of Internet of Things With Artificial Intelligence to Energy Saving Control of Air Conditioning
+					</i>
+				</article>
+				<article>
+					<h2>National Taipei University of Technology, Taipei Tech, B.S. in Electrical Engineering</h2>
+					<p class="subDetails">SEP 2012 - JUN 2016</p>
+					<p>
+						Making software and hardware energy-saving controllers on air conditioners
+					</p>
+				</article>
+			</div>
+			<div class="clear"></div>
+		</section>
+	</div>
+</div>
+<!-- <script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3753241-1");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+</script> -->
+</body>
 </html>
